@@ -69,31 +69,56 @@ def calculates_results_stats(results_dic):
                      on how to calculate the counts and statistics.
     """
     results_stats_dic = dict()
+
+    results_stats_dic['n_images'] = len(results_dic)
     results_stats_dic['n_dogs_img'] = 0
+    results_stats_dic['n_notdogs_img'] = 0
     results_stats_dic['n_match'] = 0
     results_stats_dic['n_correct_dogs'] = 0
     results_stats_dic['n_correct_notdogs'] = 0
     results_stats_dic['n_correct_breed'] = 0
 
+    #pct
+
+    results_stats_dic['pct_match'] = 0
+    results_stats_dic['pct_correct_dogs'] = 0
+    results_stats_dic['pct_correct_notdogs'] = 0
+    results_stats_dic['pct_correct_breed'] = 0
+
     for key in results_dic:
         if results_dic[key][2] == 1:
             results_stats_dic['n_match'] += 1
-        if results_dic[key][3] == 1 and results_dic[key][4] == 1:
-            results_stats_dic['n_match'] += 1
 
-        if results_dic[key][3] == 1:
-            results_stats_dic['n_dogs_img'] += 1
+            if results_dic[key][3] == 1:
+                results_stats_dic['n_dogs_img'] += 1
 
-        if results_dic[key][4] == 1:
-                results_stats_dic['n_correct_dogs'] += 1
-    # Replace None with the results_stats_dic dictionary that you created with 
-    # this function
-    else:
+                if results_dic[key][4] == 1:
+                    results_stats_dic['n_correct_dogs'] += 1
+                    results_stats_dic['n_correct_breed'] += 1
+
+            else:
+
         # Classifier classifies image as NOT a Dog(& pet image isn't a dog)
         # counts number of correct NOT dog clasifications.
-        if results_dic[key][3] == 0:
-            results_stats_dic['n_correct_notdogs'] += 1
-    results_stats_dic['n_images'] = len(results_dic)
+                if results_dic[key][4] == 0:
+                    results_stats_dic['n_correct_notdogs'] += 1
+        else:
+
+            # NOT - match
+            # isa dog (pet label)
+            if results_dic[key][3] == 1:
+                results_stats_dic['n_dogs_img'] += 1
+
+                # isa dog (classifier label)
+                if results_dic[key][4] == 1:
+                    results_stats_dic['n_correct_dogs'] += 1
+
+            # NOT dog (pet_label)
+            else:
+
+                # NOT dog (classifier label)
+                if results_dic[key][4] == 0:
+                    results_stats_dic['n_correct_notdogs'] += 1
 
     results_stats_dic['n_notdogs_img'] = (results_stats_dic['n_images'] -
                                           results_stats_dic['n_dogs_img'])

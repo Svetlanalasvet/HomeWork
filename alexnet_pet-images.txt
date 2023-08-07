@@ -311,16 +311,27 @@ PetLabelDog: 0  ClassLabelDog: 0
 
  ** Statistics from calculates_results_stats() function:
 N Images: 40  N Dog Images: 12  N NotDog Images: 28 
-Pct Corr dog:  58.3 Pct Corr NOTdog:   3.6  Pct Corr Breed:   0.0
+Pct Corr dog:  41.7 Pct Corr NOTdog:  92.9  Pct Corr Breed:  41.7
 
  ** Check Statistics - calculated from this function as a check:
 N Images: 40  N Dog Images: 12  N NotDog Images: 28 
 Pct Corr dog:  41.7 Pct Corr NOTdog:  92.9  Pct Corr Breed:  41.7
-
-
-*** Results Summary for CNN Model Architecture ALEXNET ***
-N Images            :  40
-N Dog Images        :  12
-
+CNN model architecture in use: alexnet
+Number of Images: 40
+Number of Dog Images: 12
+Number of "Not-a" Dog Images: 28
+Percentage Calculation: pct_match has value: 20.00
+Percentage Calculation: pct_correct_dogs has value: 41.67
+Percentage Calculation: pct_correct_notdogs has value: 92.86
+Percentage Calculation: pct_correct_breed has value: 41.67
+[Misclassified dog] Image: beagle with  classifier labels: English foxhound
+[Misclassified dog] Image: beagle with  classifier labels: Walker hound, Walker foxhound
+[Misclassified dog] Image: boston terrier with  classifier labels: basenji
+[Misclassified dog] Image: dalmatian with  classifier labels: dalmatian, coach dog, carriage dog
+[Misclassified dog] Image: dalmatian with  classifier labels: dalmatian, coach dog, carriage dog
+[Misclassified dog] Image: dalmatian with  classifier labels: dalmatian, coach dog, carriage dog
+[Misclassified dog] Image: great pyrenees with  classifier labels: kuvasz
+[Misclassified dog] Image: poodle with  classifier labels: standard poodle, poodle
+[Misclassified dog] Image: poodle with  classifier labels: standard poodle, poodle
 
 Total Elapsed Runtime: 0:0:1

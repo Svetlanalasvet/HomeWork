@@ -311,16 +311,25 @@ PetLabelDog: 0  ClassLabelDog: 0
 
  ** Statistics from calculates_results_stats() function:
 N Images: 40  N Dog Images: 12  N NotDog Images: 28 
-Pct Corr dog:  58.3 Pct Corr NOTdog:   3.6  Pct Corr Breed:   0.0
+Pct Corr dog:  50.0 Pct Corr NOTdog:  96.4  Pct Corr Breed:  50.0
 
  ** Check Statistics - calculated from this function as a check:
 N Images: 40  N Dog Images: 12  N NotDog Images: 28 
 Pct Corr dog:  50.0 Pct Corr NOTdog:  96.4  Pct Corr Breed:  50.0
+CNN model architecture in use: resnet
+Number of Images: 40
+Number of Dog Images: 12
+Number of "Not-a" Dog Images: 28
+Percentage Calculation: pct_match has value: 25.00
+Percentage Calculation: pct_correct_dogs has value: 50.00
+Percentage Calculation: pct_correct_notdogs has value: 96.43
+Percentage Calculation: pct_correct_breed has value: 50.00
+[Misclassified dog] Image: beagle with  classifier labels: Walker hound, Walker foxhound
+[Misclassified dog] Image: dalmatian with  classifier labels: dalmatian, coach dog, carriage dog
+[Misclassified dog] Image: dalmatian with  classifier labels: dalmatian, coach dog, carriage dog
+[Misclassified dog] Image: dalmatian with  classifier labels: dalmatian, coach dog, carriage dog
+[Misclassified dog] Image: great pyrenees with  classifier labels: kuvasz
+[Misclassified dog] Image: poodle with  classifier labels: standard poodle, poodle
+[Misclassified dog] Image: poodle with  classifier labels: standard poodle, poodle
 
-
-*** Results Summary for CNN Model Architecture RESNET ***
-N Images            :  40
-N Dog Images        :  12
-
-
-Total Elapsed Runtime: 0:0:3
+Total Elapsed Runtime: 0:0:2
