@@ -31,12 +31,6 @@ from classifier import classifier
 #
 from os import listdir
 def classify_images(images_dir, results_dic, model):
-    # in_files = listdir(images_dir)
-    # for idx in range(0, len(in_files), 1):
-    #     classifier_label = classifier(images_dir + '/' + in_files[idx], model)
-    #     results_dic[in_files[idx]].append(classifier_label)
-    #     if classifier_label in results_dic[in_files[idx]][0]:
-    #         results_dic[in_files[idx]].append(1)
 
     for key in results_dic:
         classifier_label = classifier(images_dir + '/' + key, model).lower().strip()
