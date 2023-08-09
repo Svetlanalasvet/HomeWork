@@ -71,14 +71,22 @@ def adjust_results4_isadog(results_dic, dogfile):
     with open(dogfile, "r") as infile:
         line = infile.readline()
         while line != "":
-            line = line.strip()
-            dognames = list()
-            dognames = line.split(" ")
-            for idx in range(0, len(dognames), 1):
-                # If first time key is assigned initialize the list with pet &
-                # classifier labels
-                if dognames[idx] not in dognames_dic:
-                    dognames_dic[dognames[idx]] = [dognames[idx]]
+            line = line.rstrip()
+
+            if line not in dognames_dic:
+                dognames_dic[line] = 1
+
+            else :
+               print("**Warning: duplicate dognames", line)
+
+
+            # dognames = list()
+            # dognames = line.split(" ")
+            # for idx in range(0, len(dognames), 1):
+            #     # If first time key is assigned initialize the list with pet &
+            #     # classifier labels
+            #     if dognames[idx] not in dognames_dic:
+            #         dognames_dic[dognames[idx]] = [dognames[idx]]
 
             line = infile.readline()
     for key in results_dic:
