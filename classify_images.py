@@ -20,28 +20,12 @@
 #           of the pet and classifier labels as the item at index 2 of the list.
 #
 ##
+import os.path
 # Imports classifier function for using CNN to classify images 
 from classifier import classifier 
 
-# TODO 3: Define classify_images function below, specifically replace the None
-#       below by the function definition of the classify_images function. 
-#       Notice that this function doesn't return anything because the 
-#       results_dic dictionary that is passed into the function is a mutable 
-#       data type so no return is needed.
-#
 from os import listdir
 def classify_images(images_dir, results_dic, model):
-
-    for key in results_dic:
-        classifier_label = classifier(images_dir + '/' + key, model).lower().strip()
-        results_dic[key].append(classifier_label)
-        if classifier_label in results_dic[key][0]:
-             results_dic[key].append(1)
-        # if pet image label was NOT found then there is no match
-        else:
-            results_dic[key].append(0)
-
-
     """
     
     Creates classifier labels with classifier function, compares pet labels to 
@@ -78,3 +62,17 @@ def classify_images(images_dir, results_dic, model):
      Returns:
            None - results_dic is mutable data type so no return needed.         
     """
+
+    filenames = listdir(images_dir)
+
+    for filename in filenames:
+        pet_label = results_dic[filename][0]
+
+        classifier_labels = classifier(os.path.join(images_dir, filename), model).lower().strip()
+
+        results_dic[filename] = [pet_label, classifier_labels]
+
+        if pet_label in classifier_labels:
+            results_dic[filename].append(1)
+        else:
+            results_dic[filename].append(0)

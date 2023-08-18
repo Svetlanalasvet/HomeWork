@@ -31,11 +31,6 @@
 #           label isn't a dog.
 #
 ##
-# TODO 4: Define adjust_results4_isadog function below, specifically replace the None
-#       below by the function definition of the adjust_results4_isadog function. 
-#       Notice that this function doesn't return anything because the 
-#       results_dic dictionary that is passed into the function is a mutable 
-#       data type so no return is needed.
 # 
 def adjust_results4_isadog(results_dic, dogfile):
     """
@@ -80,13 +75,13 @@ def adjust_results4_isadog(results_dic, dogfile):
                print("**Warning: duplicate dognames", line)
 
             line = infile.readline()
-    for key in results_dic:
+    for key, value in results_dic.items():
 
-        if results_dic[key][0] in dognames_dic and  results_dic[key][1] in dognames_dic:
-                results_dic[key].extend((1, 1))
-        if results_dic[key][0] in dognames_dic and  results_dic[key][1] not in dognames_dic:
-                results_dic[key].extend((1, 0))
-        if results_dic[key][0] not in dognames_dic and  results_dic[key][1] in dognames_dic:
-                results_dic[key].extend((0, 1))
-        if results_dic[key][0] not in dognames_dic and  results_dic[key][1] not in dognames_dic:
-                results_dic[key].extend((0, 0))
+        if value[0] in dognames_dic and value[1] in dognames_dic:
+            value.extend((1, 1))
+        if value[0] in dognames_dic and value[1] not in dognames_dic:
+            value.extend((1, 0))
+        if value[0] not in dognames_dic and value[1] in dognames_dic:
+            value.extend((0, 1))
+        if value[0] not in dognames_dic and value[1] not in dognames_dic:
+            value.extend((0, 0))

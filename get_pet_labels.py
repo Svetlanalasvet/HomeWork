@@ -19,10 +19,7 @@
 # Imports python modules
 from os import listdir
 
-# TODO 2: Define get_pet_labels function below please be certain to replace None
-#       in the return statement with results_dic dictionary that you create 
-#       with this function
-# 
+
 def get_pet_labels(image_dir):
     """
     Creates a dictionary of pet labels (results_dic) based upon the filenames 
@@ -44,40 +41,22 @@ def get_pet_labels(image_dir):
     # function
     in_files = listdir(image_dir)
     results_dic = dict()
-    for idx in range(0, len(in_files), 1):
-        if in_files[idx][0] != ".":
+    for file_name in in_files:
+        if file_name != ".":
             pet_label = ""
-            # TODO: 2a. BELOW REPLACE pass with CODE that will process each
-            #          filename in the in_files list to extract the dog breed
-            #          name from the filename. Recall that each filename can be
-            #          accessed by in_files[idx]. Be certain to place the
-            #          extracted dog breed name in the variable pet_label
-            #          that's created as an empty string ABOVE
 
-
-            low_pet_image = in_files[idx].lower()
+            low_pet_image = file_name.lower()
 
             ## Splits lower case string by _ to break into words
             word_list_pet_image = low_pet_image.split("_")
 
-            ## Create pet_name starting as empty string
-            pet_name = ""
+            ## Check in loop for create pet_label
+            pet_label = ' '.join([word.strip() for word in word_list_pet_image if word.isalpha()])
 
-            ## Loops to check if word in pet name is only
-            ## alphabetic characters - if true append word
-            ## to pet_name separated by trailing space
-            for word in word_list_pet_image:
-                if word.isalpha():
-                    pet_name += word + " "
-
-            ## Strip off starting/trailing whitespace characters
-            pet_label = pet_name.strip()
-
-
-        if in_files[idx] not in results_dic:
-            results_dic[in_files[idx]] = [pet_label]
+        if file_name not in results_dic:
+            results_dic[file_name] = [pet_label]
 
     else:
         print("** Warning: Duplicate files exist in directory:",
-              in_files[idx])
+              file_name)
     return results_dic
